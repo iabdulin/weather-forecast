@@ -5,7 +5,9 @@ default: &default
     max_size: <%= 256.megabytes %>
     namespace: <%= Rails.env %>
 
+
 development:
+  database: cache
   <<: *default
 
 test:
