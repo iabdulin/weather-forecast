@@ -1,0 +1,25 @@
+<div class="container mx-auto mb-8" data-controller="weather theme">
+  <div class="mb-16">
+    <a href="/">
+      <h1 class="text-5xl text-center">Weather Forecast</h1>
+    </a>
+  </div>
+
+  <%= form_with data: { controller: "autocomplete" }, method: :get, local: true do |f| %>
+    <div class="relative flex">
+      <%= f.text_field :address,
+          placeholder: "Enter address",
+          value: current_location,
+          class: "flex-grow p-2 border rounded dark:bg-gray-800",
+          autocomplete: "off",
+          data: {
+            "1p-ignore": true, # disable 1password autocomplete
+            search_target: "input",
+            autocomplete_target: "input",
+            action: "input->autocomplete#search keydown->autocomplete#handleKeydown"
+          } %>
+      <div data-autocomplete-target="suggestions" class="absolute hidden w-full top-full left-0 mt-1 bg-white  dark:bg-gray-800 border rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+      </div>
+    </div>
+  <% end %>
+</div>
