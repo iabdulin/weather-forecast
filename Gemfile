@@ -61,6 +61,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "vcr"
+  gem "webmock"
 end
 
 gem "tailwindcss-rails", "~> 3.1"
+gem "geocoder"
