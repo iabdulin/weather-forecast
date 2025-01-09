@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.mapbox.com/geocoding/v5/mapbox.places/asdfasdfasdfasfd.json?access_token=<MAPBOX_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.geo+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 09 Jan 2025 23:21:15 GMT
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - x-rate-limit-interval,x-rate-limit-limit,x-rate-limit-remaining,x-rate-limit-reset,ip-proximity
+      Cache-Control:
+      - max-age=432000,stale-while-revalidate=600,stale-if-error=86400
+      X-Rate-Limit-Limit:
+      - '600'
+      X-Rate-Limit-Interval:
+      - '60'
+      X-Rate-Limit-Reset:
+      - '1736464935'
+      Last-Modified:
+      - Thu, 09 Jan 2025 16:35:27 GMT
+      Etag:
+      - '"fe31306ce7348fe9f0696409e82ae910"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 3393c563e3ece6b86044bd7b43ba944a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - YYC51-P2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - L6QwVIkfJwCW8ah0URZOc6xIW28UbrmAIVzfvmtZlBZfg2wGEH2c9g==
+      Age:
+      - '29'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0eXBlIjoiRmVhdHVyZUNvbGxlY3Rpb24iLCJxdWVyeSI6WyJhc2RmYXNkZmFzZGZhc2ZkIl0sImZlYXR1cmVzIjpbXSwiYXR0cmlidXRpb24iOiJOT1RJQ0U6IMKpIDIwMjUgTWFwYm94IGFuZCBpdHMgc3VwcGxpZXJzLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBVc2Ugb2YgdGhpcyBkYXRhIGlzIHN1YmplY3QgdG8gdGhlIE1hcGJveCBUZXJtcyBvZiBTZXJ2aWNlIChodHRwczovL3d3dy5tYXBib3guY29tL2Fib3V0L21hcHMvKS4gVGhpcyByZXNwb25zZSBhbmQgdGhlIGluZm9ybWF0aW9uIGl0IGNvbnRhaW5zIG1heSBub3QgYmUgcmV0YWluZWQuIn0=
+  recorded_at: Thu, 09 Jan 2025 23:21:44 GMT
+recorded_with: VCR 6.3.1
