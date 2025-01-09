@@ -14,7 +14,6 @@
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
@@ -23,9 +22,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <main class="container mx-auto mt-28 px-5 mb-20">
       <%= yield %>
     </main>
+
+    <footer class="bottom-0 w-full py-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-5 text-center">
+        <%= image_tag "/icon.png", class: "h-16 w-16 inline-block", alt: "Site icon" %>
+        <p>Apple Weather Forecast by Ildar Abdulin</p>
+      </div>
+    </footer>
   </body>
 </html>
