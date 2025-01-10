@@ -12,6 +12,9 @@ https://github.com/user-attachments/assets/537c8d30-864d-4fbd-b518-c73688f28472
 - Rails minitests
 - E2E tests with Playwright (not added to CI yet)
 
+## Getting Started
+
+For detailed setup instructions, please see our [Setup Guide](docs/setup.md).
 
 
 ## Application Flow
