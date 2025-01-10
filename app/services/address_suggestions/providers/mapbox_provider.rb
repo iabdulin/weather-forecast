@@ -5,7 +5,7 @@ module AddressSuggestions
       def initialize
         Geocoder.configure(
           lookup: :mapbox,
-          api_key: Rails.application.credentials.mapbox_api_key!,
+          api_key: ENV["MAPBOX_API_KEY"] || Rails.application.credentials.mapbox_api_key!,
           timeout: 5,
           units: :km
         )

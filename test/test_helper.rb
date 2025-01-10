@@ -23,7 +23,7 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = false
 
   # Filter sensitive data
-  config.filter_sensitive_data("<MAPBOX_API_KEY>") { Rails.application.credentials.mapbox_api_key }
+  config.filter_sensitive_data("<MAPBOX_API_KEY>") { ENV["MAPBOX_API_KEY"] || Rails.application.credentials.mapbox_api_key }
 
   # # Optionally, configure cassette expiry for weather data
   config.default_cassette_options = {
