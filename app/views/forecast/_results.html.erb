@@ -1,0 +1,82 @@
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border mb-8" data-controller="units">
+  <div class="flex justify-end mb-4 space-x-2">
+    <button data-units-target="imperialBtn"
+            data-action="units#setImperial"
+            class="text-sm px-3 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 text-white"
+            disabled>
+      °F/mph
+    </button>
+    <button data-units-target="metricBtn"
+            data-action="units#setMetric"
+            class="text-sm px-3 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+      °C/km/h
+    </button>
+  </div>
+
+
+
+  <div class="mb-8 container mx-auto text-center">
+    <h2 class="text-3xl mb-4" data-weather-target="location">
+      <%= "#{forecast.dig("location", "name")}, #{forecast.dig("location", "country")}" %>
+    </h2>
+    <%= image_tag(forecast["current"]["condition"]["icon"].gsub("64", "128"), size: "128x128", class: "inline-block") %>
+    <p class="text-sm -mt-2"><%= forecast.dig("current", "condition", "text") %></p>
+    <p class="text-3xl mb-2 mt-4">
+      <span data-units-target="temperature" data-celsius="<%= forecast.dig("current", "temp_c") %>">
+        <%= forecast.dig("current", "temp_c").round %>°C
+      </span>
+    </p>
+    <p class="text-sm -mt-2">Feels like
+      <span data-units-target="temperature" data-celsius="<%= forecast.dig("current", "feelslike_c") %>">
+        <%= forecast.dig("current", "feelslike_c").round %>°C
+      </span>
+    </p>
+    <div class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+      <p>
+        <span data-units-target="wind" data-kph="<%= forecast.dig("current", "wind_kph") %>">
+          <%= forecast.dig("current", "wind_kph").round %> km/h
+        </span>
+        <%= forecast.dig("current", "wind_dir") %>
+        wind,
+        <%= forecast.dig("current", "humidity") %>% humidity
+      </p>
+      <p>Cache age: <%= ((Time.current - timestamp) / 60).round %> minutes</p>
+    </div>
+  </div>
+
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+    <% forecast["forecast"].each do |day| %>
+      <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded transition-all duration-200 hover:scale-105 hover:shadow-xl">
+        <h2 class="font-semibold mb-2 text-xl">
+          <%= Date.parse(day.dig("date")).strftime("%a") %>
+          <br>
+          <span class="text-sm"><%= Date.parse(day.dig("date")).strftime("%b #{Date.parse(day.dig("date")).day.ordinalize}") %></span>
+        </h2>
+        <%= image_tag(day.dig("condition","icon").gsub("64", "128"), size: "128x128", class: "inline-block") %>
+        <div class="-mt-2"><%= day.dig("condition","text") %></div>
+        <div class="text-3xl mb-4 mt-4">
+          <p data-units-target="temperature" data-celsius="<%= day.dig("maxtemp_c") %>">
+            <%= day.dig("maxtemp_c").round %>°C
+          </p>
+          <p class="text-sm">
+            Night:
+            <span data-units-target="temperature" data-celsius="<%= day.dig("mintemp_c") %>">
+              <%= day.dig("mintemp_c").round %>°C
+            </span>
+          </p>
+        </div>
+        <div class="text-sm">
+          <p>
+            <span data-units-target="wind" data-kph="<%= day.dig("maxwind_kph") %>">
+              <%= day.dig("maxwind_kph").round %> km/h
+            </span>
+            wind
+            <br>
+            <%= day.dig("avghumidity") %>% humidity
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
