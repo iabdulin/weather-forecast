@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test')
+const { verifyUnits } = require('./_support')
 
 test.describe('Mock provider', () => {
   test('displays mock data', async ({ page }) => {
@@ -7,6 +8,7 @@ test.describe('Mock provider', () => {
     await expect(page.getByText('Mock Country')).toBeVisible()
     await expect(page.getByText('Feels like 52°F')).toBeVisible()
     await expect(page.getByText('7 mph N wind, 11% humidity')).toBeVisible()
+    await verifyUnits('imperial', page)
   })
 
   test('returns json data', async ({ request }) => {
