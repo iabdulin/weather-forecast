@@ -66,14 +66,28 @@ class ForecastControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "returns html format when requested" do
+    url = "/forecast/53.5461,-113.4937"
     VCR.use_cassette("forecast_html") do
-      get "/forecast/53.5461,-113.4937"
+      get url
       assert_response :success
       assert_equal "text/html", @response.media_type
 
       assert_select "h1", "Weather Forecast"
       assert_select "h2", "Edmonton, Canada"
+      assert_select "p", "Status: not cached"
     end
+  end
+
+  test "hits cache upon second request to similar coordinates" do
+    coordinates = [53.5461, -113.4937]
+    VCR.use_cassette("forecast_html") do
+      get "/forecast/#{coordinates.join(",")}"
+      assert_select "p", "Status: not cached"
+    end
+
+    coordinates = [53.51, -113.51]
+    get "/forecast/#{coordinates.join(",")}"
+    assert_select "p", "Status: cached 0 minutes ago"
   end
 
   test "returns html format when requested with mock provider" do
