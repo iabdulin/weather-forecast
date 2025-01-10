@@ -24,6 +24,7 @@ VCR.configure do |config|
 
   # Filter sensitive data
   config.filter_sensitive_data("<MAPBOX_API_KEY>") { ENV["MAPBOX_API_KEY"] || Rails.application.credentials.mapbox_api_key }
+  config.filter_sensitive_data("<WEATHERAPI_COM_API_KEY>") { ENV["WEATHERAPI_COM_API_KEY"] || Rails.application.credentials.weatherapi_com_api_key }
 
   # # Optionally, configure cassette expiry for weather data
   config.default_cassette_options = {

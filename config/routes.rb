@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   root "forecast#index"
 
   get "/forecast/address_suggestions", to: "forecast#address_suggestions"
+  get "/forecast/:coordinates", to: "forecast#show", as: :forecast, constraints: {coordinates: /[^\/]+/}
+  get "/forecast", to: "forecast#show", constraints: {format: :json}
 end
