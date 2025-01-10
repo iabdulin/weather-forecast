@@ -40,7 +40,7 @@
         wind,
         <%= forecast.dig("current", "humidity") %>% humidity
       </p>
-      <p>Cache age: <%= ((Time.current - timestamp) / 60).round %> minutes</p>
+      <p>Status: <%= cached ? "cached #{((Time.current - timestamp) / 60).round} minutes ago" : "not cached" %></p>
     </div>
   </div>
 

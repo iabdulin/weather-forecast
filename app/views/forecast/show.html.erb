@@ -3,7 +3,7 @@
 
 <div class="container mx-auto">
 
-  <%= render partial: "forecast/results", locals: { forecast: @forecast[:forecast], timestamp: @forecast[:timestamp] } %>
+  <%= render partial: "forecast/results", locals: { forecast: @forecast[:forecast], timestamp: @forecast[:timestamp], cached: @forecast[:cache_age].present? } %>
 
 </div>
 
