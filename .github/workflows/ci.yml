@@ -52,6 +52,7 @@ jobs:
     env:
       RAILS_ENV: test
       MAPBOX_API_KEY: test
+      WEATHERAPI_COM_API_KEY: test
     # services:
     #  redis:
     #    image: redis
