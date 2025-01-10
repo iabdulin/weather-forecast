@@ -9,7 +9,7 @@ module AddressSuggestions
 
       test "initializes with correct Geocoder configuration" do
         assert_equal :mapbox, Geocoder.config.lookup
-        assert_equal Rails.application.credentials.mapbox_api_key!, Geocoder.config.api_key
+        assert_equal (ENV["MAPBOX_API_KEY"] || Rails.application.credentials.mapbox_api_key), Geocoder.config.api_key
       end
 
       test "search returns formatted address suggestions" do

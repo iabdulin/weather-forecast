@@ -51,6 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
+      MAPBOX_API_KEY: test
     # services:
     #  redis:
     #    image: redis
