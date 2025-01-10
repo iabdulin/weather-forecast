@@ -7,3 +7,6 @@
 
 </div>
 
+<%= javascript_tag do %>
+  document.documentElement.classList.toggle("dark", <%= @forecast.dig("forecast","current", "is_day")  == 0 %>);
+<% end %>
