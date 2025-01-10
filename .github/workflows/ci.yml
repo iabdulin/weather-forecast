@@ -49,7 +49,8 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
+    env:
+      RAILS_ENV: test
     # services:
     #  redis:
     #    image: redis
@@ -68,11 +69,13 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
+      - name: Build Tailwind CSS
+        run: bin/rails tailwindcss:build
+      - name: Assets Precompile
+        run: |
+          bin/rails assets:clobber
+          bundle exec rake assets:precompile
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
