@@ -103,6 +103,9 @@ The current implementation displays the forecast for the location the user searc
 ### API Rate Limit Handling
 Current implementation doesn't handle API rate limit responses explicitly. For production, I'd add better error handling when we hit Mapbox or WeatherAPI rate limits, showing user-friendly messages and potentially implementing a backoff strategy.
 
+### Add Standard Cache Headers
+The application currently doesn't include standard cache-related HTTP headers (X-Cache-Hit, X-Cache-Age) in JSON responses. While the HTML responses show cache status visually, adding these headers would improve API usability for JSON format requests to the `forecast#show` endpoint. This was omitted in the current implementation since the application primarily uses HTML format responses.
+
 ### Configure E2E tests in CI
 Haven't had enough time for this.
 
