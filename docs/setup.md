@@ -23,8 +23,9 @@ bin/rails db:migrate
 2. Setup Playwright
 
 ```bash
-cd tests/e2e
+cd test/e2e
 npm install
+npx playwright install # Install browsers
 ```
 
 ## Create and edit the encrypted credentials file
@@ -34,10 +35,20 @@ bin/rails credentials:edit
 ```
 
 Add the following credentials:
+```yaml
 weatherapi_com_api_key: your_weatherapi_key # Get from https://www.weatherapi.com/
 mapbox_api_key: your_mapbox_key # Get from https://www.mapbox.com/
+```
 
 ## Development
+
+### Option 1: Run using Foreman
+
+```bash
+foreman start -f=Procfile.dev
+```
+
+### Option 2: Run Rails server & Tailwind CSS watcher
 
 Rails server (The application will be available at `http://localhost:3000`):
 ```bash
@@ -48,6 +59,8 @@ Tailwind CSS watcher:
 ```bash
 bin/rails tailwindcss:watch
 ```
+
+### Linting & Security Scanning
 
 Linting with StandardRB:
 ```bash
@@ -68,7 +81,7 @@ bin/rails test
 
 2. Run system tests with Playwright:
 ```bash
-cd tests/e2e
+cd test/e2e
 npm run test
 ```
 
