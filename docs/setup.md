@@ -26,8 +26,8 @@ bin/rails db:create
 
 3. Setup credentials
 
-4.1. Obtain master.key from the project owner
-4.2. Place it in config/master.key
+- Obtain master.key from the project owner
+- Place it in config/master.key
 
 The project uses the following credentials:
 ```yaml
