@@ -8,36 +8,45 @@ This guide will help you get the Weather Forecast application up and running on 
 - Node.js for E2E tests (version specified in `test/e2e/.node-version`)
 - Git
 - SQLite3 (used for SolidCache)
+- config/master.key to decrypt credentials (obtained from the project owner)
 
 ## Initial Setup
 
 1. Clone the repository and install ruby dependencies
 ```bash
-git clone https://github.com/yourusername/weather-forecast.git
+git clone https://github.com/iabdulin/weather-forecast.git
 cd weather-forecast
 bundle install
-bin/rails db:create
-bin/rails db:migrate
 ```
 
-2. Setup Playwright
-
+2. Create the database and cache database for SolidCache
 ```bash
-cd test/e2e
-npm install
-npx playwright install # Install browsers
+bin/rails db:create
 ```
 
-## Create and edit the encrypted credentials file
+3. Setup credentials
 
+4.1. Obtain master.key from the project owner
+4.2. Place it in config/master.key
+
+The project uses the following credentials:
+```yaml
+weatherapi_com_api_key: your_weatherapi_key # https://www.weatherapi.com/
+mapbox_api_key: your_mapbox_key # https://www.mapbox.com/
+```
+
+To edit credentials, you can use the following command (you have to have the master.key in the config folder otherwise Rails will not be able to decrypt the credentials file):
 ```bash
 bin/rails credentials:edit
 ```
 
-Add the following credentials:
-```yaml
-weatherapi_com_api_key: your_weatherapi_key # Get from https://www.weatherapi.com/
-mapbox_api_key: your_mapbox_key # Get from https://www.mapbox.com/
+4. Setup Playwright to run e2e tests
+
+This will install npm packages and browsers for Playwright
+```bash
+cd test/e2e
+npm install
+npx playwright install
 ```
 
 ## Development
