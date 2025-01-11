@@ -21,7 +21,7 @@ module Weather
 
       # Retrieves mock forecast data for given coordinates
       #
-      # @param coordinates [String] The location coordinates to fetch weather for
+      # @param coordinates [String] Location coordinates in "latitude,longitude" format
       # @return [Hash] Mock weather data with location, current conditions, and forecast
       # @raise [Weather::Error] When coordinates are set to "raise_error"
       # @raise [Weather::TimeoutError] When coordinates are set to "timeout"
