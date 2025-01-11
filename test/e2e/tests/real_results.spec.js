@@ -8,6 +8,7 @@ test('displays results', async ({ page }) => {
 
   await expect(page).toHaveTitle(/Weather Forecast/)
 
+  await page.waitForTimeout(300) // wait for the Stimulus controller to initialize
   await page.getByPlaceholder('Enter address').click()
   await page.getByPlaceholder('Enter address').fill('Edmonton')
 
